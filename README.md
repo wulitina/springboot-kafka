@@ -1,12 +1,42 @@
 
 ![img.png](readme-pic%2Fimg.png)
 
-# Spring Boot + Apache Kafka - The Quickstart Practical Guide- Udemy course
+# Spring Boot Kafka Tutorial
 
+This project demonstrates how to integrate Apache Kafka with Spring Boot for producing and consuming messages in both plain text and JSON formats.
 
-# Blog posts on JavaGuides
-Spring Boot Kafka Producer Consumer Example Tutorial - https://www.javaguides.net/2022/05/spring-boot-kafka-producer-consumer-example-tutorial.html
+## Running the Application
+1. Ensure Kafka is running on localhost:9092.
+2. Build the project using Maven:
+```bash
+./mvnw clean install
+```
+3. Run the Spring Boot application:
+```bash
+./mvnw spring-boot:run
+```
 
-Spring Boot Kafka JsonSerializer and JsonDeserializer Example - https://www.javaguides.net/2022/05/spring-boot-kafka-jsonserializer-and-Jsondeserializer-example.html
-# Version
-Spring boot version 3.0.2
+## Endpoints
+### MessageController
+- POST /api/v1/kafka/publish
+- Description: Publish a plain text message to Kafka.
+- Request Body: `{ "message": "your_message" }`
+- Example:
+  ```bash
+  curl -X POST http://localhost:8080/api/v1/kafka/publish -H "Content-Type: application/json" -d '{"message": "Hello Kafka"}'
+  ```
+### JsonMessageController
+- POST /api/v1/kafka/publishJson
+- Description: Publish a JSON message to Kafka.
+- Request Body: `{ "name": "your_name", "age": your_age }`
+- Example:
+```bash
+curl -X POST http://localhost:8080/api/v1/kafka/publishJson -H "Content-Type: application/json" -d '{"name": "John", "age": 30}'
+```
+
+## Dependencies
+- Spring Boot Starter Kafka
+- Apache Kafka
+- Spring Boot Starter Web
+- Lombok
+
